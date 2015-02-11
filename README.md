@@ -18,11 +18,11 @@ create a folder inside each "year" folder for each entity you would like to anal
 
 eg
 .
-+--bookworm_transform
+|+--bookworm_transform
 
-  +--2010         2011       2012
+|  +--2010         2011       2012
 
-  +--USQ  UNE       UNISA      USC
+|  +--USQ  UNE       UNISA      USC
 
 
 
