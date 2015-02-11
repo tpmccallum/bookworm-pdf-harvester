@@ -17,12 +17,12 @@ create a folder inside bookworm_transform for each year you wish to analyse
 create a folder inside each "year" folder for each entity you would like to analyse
 
 eg
+.
++--bookworm_transform
 
-bookworm_transform
+|  +--2010         2011       2012
 
-2010         2011       2012
-
-USQ  UNE       UNISA      USC
+|  +--USQ  UNE       UNISA      USC
 
 place a text file with a list of URLs (one per line) which point to online PDFs. bookworm_transform/2010/USQ/listOfPDFUrls.txt
 
