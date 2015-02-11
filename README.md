@@ -20,6 +20,8 @@ place a text file with a list of URLs (one per line) which point to online PDFs.
 
 ensure that there are no files in any of the other folders (only the lowers level)
 
+Note: I am wanting to make this more flexible but will stick with this file structure example for now as it fits my purpose
+
 run the python file 
 
 eg 
