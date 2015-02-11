@@ -17,12 +17,11 @@ create a folder inside bookworm_transform for each year you wish to analyse
 create a folder inside each "year" folder for each entity you would like to analyse
 
 eg
-.
-|+--bookworm_transform
-
-|  +--2010         2011       2012
-
-|  +--USQ  UNE       UNISA      USC
+'''
+|bookworm_transform
+         |--- 2010          2011       2012
+               | |            |         |
+             USQ  UNE       UNISA      USC
 
 
 
