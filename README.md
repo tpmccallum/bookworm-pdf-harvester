@@ -20,15 +20,11 @@ eg
 .
 +--bookworm_transform
 
-|  +--2010         2011       2012
+  +--2010         2011       2012
 
-|  +--USQ  UNE       UNISA      USC
+  +--USQ  UNE       UNISA      USC
 
-.
-+-- _config.yml
-+-- _drafts
-|   +-- begin-with-the-crazy-ideas.textile
-|   +-- on-simplicity-in-technology.markdown
+
 
 place a text file with a list of URLs (one per line) which point to online PDFs. bookworm_transform/2010/USQ/listOfPDFUrls.txt
 
