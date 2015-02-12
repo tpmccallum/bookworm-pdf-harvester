@@ -26,6 +26,10 @@ import json
 
 import subprocess
 
+#encoding
+
+import codecs
+
 
 
 def removeEverythingButAlphaNumeric(stringToClean):
@@ -106,11 +110,11 @@ def returnMimeType(locationOfFile):
 
 def createJsonCatalogTxt(year, uni, filename, searchString):
 
-    date = str(year) + "-01-01"
+    date = year
 
     #from https://freepythontips.wordpress.com/2013/08/08/storing-and-loading-data-with-json/
 
-    jsonObject1 = {u"date": date, u"uni": uni, u"filename": filename, u"searchstring": removeEverythingButAlphaNumeric(searchString)}
+    jsonObject1 = {u"date": int(date), u"uni": uni, u"filename": filename, u"searchstring": removeEverythingButAlphaNumeric(searchString)}
 
     return json.dumps(jsonObject1)
 
@@ -202,17 +206,17 @@ print "Current working directory is %s" % (currentDir)
 
 print "Creating output environment"
 
-os.makedirs(os.path.join(currentDir, "output", "texts", "raw"))
+os.makedirs(os.path.join(currentDir, "BookwormDB", "files", "texts", "raw"))
 
-os.makedirs(os.path.join(currentDir, "output", "metadata"))
+os.makedirs(os.path.join(currentDir, "BookwormDB", "files", "metadata"))
 
 print "Copying our field_descriptions.json file from %s to the output/metadata dir " % (currentDir)
 
-subprocess.call(['cp', 'field_descriptions.json', 'output/metadata/'])
+subprocess.call(['cp', 'field_descriptions.json', 'BookwormDB/files/metadata/'])
 
 print "Creating the jsoncatalog.txt file"
 
-jsonCatalogFile = open(os.path.join(currentDir, "output", "metadata" , "jsoncatalog.txt"), 'wb')
+jsonCatalogFile = codecs.open(os.path.join(currentDir, "BookwormDB", "files", "metadata" , "jsoncatalog.txt"), 'wb', "utf-8")
 
 for root, dirs, files in os.walk(os.path.join(currentDir, "bookworm_transform")):
 
@@ -272,13 +276,9 @@ for root, dirs, files in os.walk(os.path.join(currentDir, "bookworm_transform"))
 
                         print "The filename for the text WITH an extension is %s " % (fnExt)
 
-                        rawTextFile = open(os.path.join(currentDir, "output", "texts", "raw", fnExt), 'wb')
+                        rawTextFile = codecs.open(os.path.join(currentDir, "BookwormDB", "files", "texts", "raw", fnExt), 'wb', "utf-8")
 
                         print "Extracting text from PDF file and writing to text file."
-
-                        rawTextFile.write(fn)
-
-                        rawTextFile.write("\t")
 
                         #TODO write function to see if we have already got the converted text file (don't waste resources processing)
 
