@@ -206,17 +206,17 @@ print "Current working directory is %s" % (currentDir)
 
 print "Creating output environment"
 
-os.makedirs(os.path.join(currentDir, "BookwormDB", "files", "texts", "raw"))
+os.makedirs(os.path.join(currentDir, "files", "texts", "raw"))
 
-os.makedirs(os.path.join(currentDir, "BookwormDB", "files", "metadata"))
+os.makedirs(os.path.join(currentDir, "files", "metadata"))
 
 print "Copying our field_descriptions.json file from %s to the output/metadata dir " % (currentDir)
 
-subprocess.call(['cp', 'field_descriptions.json', 'BookwormDB/files/metadata/'])
+subprocess.call(['cp', 'field_descriptions.json', 'files/metadata/'])
 
 print "Creating the jsoncatalog.txt file"
 
-jsonCatalogFile = codecs.open(os.path.join(currentDir, "BookwormDB", "files", "metadata" , "jsoncatalog.txt"), 'wb', "utf-8")
+jsonCatalogFile = codecs.open(os.path.join(currentDir, "files", "metadata" , "jsoncatalog.txt"), 'wb', "utf-8")
 
 for root, dirs, files in os.walk(os.path.join(currentDir, "bookworm_transform")):
 
@@ -276,7 +276,7 @@ for root, dirs, files in os.walk(os.path.join(currentDir, "bookworm_transform"))
 
                         print "The filename for the text WITH an extension is %s " % (fnExt)
 
-                        rawTextFile = codecs.open(os.path.join(currentDir, "BookwormDB", "files", "texts", "raw", fnExt), 'wb', "utf-8")
+                        rawTextFile = codecs.open(os.path.join(currentDir, "files", "texts", "raw", fnExt), 'wb', "utf-8")
 
                         print "Extracting text from PDF file and writing to text file."
 
