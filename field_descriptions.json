@@ -1,0 +1,5 @@
+[
+{"field":"date","datatype":"time","type":"numeric","unique":true,"derived":[{"resolution":"year"}]},
+{"field":"searchstring","datatype":"searchstring","type":"text","unique":true},
+{"field":"uni","datatype":"categorical","type":"text","unique":true}
+]
