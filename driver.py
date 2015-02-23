@@ -2,6 +2,8 @@
 
 import os
 
+import urllib
+
 import sys
 
 import magic
@@ -288,7 +290,7 @@ for root, dirs, files in os.walk(os.path.join(currentDir, "bookworm_transform"))
 
                         #TODO scrape search string from data
 
-                        searchString = """%s, document from %s is located at <a href=%s target="_blank">%s</a>""" % (year, uni, line, line)
+                        searchString = urllib.quote_plus("""%s, document from %s is located at <a href=%s target="_blank">%s</a>""" % (year, uni, line, line))
                         #create json catalog file
 
                         print "Writing to the jsoncatalogfile"
