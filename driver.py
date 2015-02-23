@@ -288,9 +288,10 @@ for root, dirs, files in os.walk(os.path.join(currentDir, "bookworm_transform"))
 
                         rawTextFile.close()
 
-                        #TODO scrape search string from data
+                        #TODO scrape search and URL string from data
 
-                        searchString = """%s, document from %s is located at <a href=%s target="_blank">%s</a>""" % (year, uni, line, line) 
+                        searchString = "asdf"
+                        #searchString = """%s, document from %s is located at <a href=%s target="_blank">%s</a>""" % (year, uni, line, line) 
                         #create json catalog file
 
                         print "Writing to the jsoncatalogfile"
