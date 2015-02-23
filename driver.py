@@ -212,7 +212,7 @@ os.makedirs(os.path.join(currentDir, "files", "texts", "raw"))
 
 os.makedirs(os.path.join(currentDir, "files", "metadata"))
 
-print "Copying our field_descriptions.json file from %s to the output/metadata dir " % (currentDir)
+print "Copying our field_descriptions.json file from %s to the files/metadata dir " % (currentDir)
 
 subprocess.call(['cp', 'field_descriptions.json', 'files/metadata/'])
 
