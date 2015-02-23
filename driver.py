@@ -116,7 +116,7 @@ def createJsonCatalogTxt(year, uni, filename, searchString):
 
     #from https://freepythontips.wordpress.com/2013/08/08/storing-and-loading-data-with-json/
 
-    jsonObject1 = {u"date": int(date), u"uni": uni, u"filename": filename, u"searchstring": removeEverythingButAlphaNumeric(searchString)}
+    jsonObject1 = {u"date": int(date), u"uni": uni, u"filename": filename, u"searchstring": searchString}
 
     return json.dumps(jsonObject1)
 
