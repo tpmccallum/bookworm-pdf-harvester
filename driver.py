@@ -247,15 +247,15 @@ for root, dirs, files in os.walk(os.path.join(currentDir, "bookworm_transform"))
 
                 for line in theTextFile:
 
-                    cleanLine = lowerAndStrip(line)
+                    cleanLine = line.strip()
 
                     if cleanLine.endswith(".pdf"):
 
-                        print "Processing line %s " % (line)
+                        print "Processing line %s " % (cleanLine)
 
                         #TODO write break out in the event that file retured is not a pdf
 
-                        pdfFileLocation = fetchPdf(line, root)
+                        pdfFileLocation = fetchPdf(cleanLine, root)
 
                         pathToSplit = pdfFileLocation
 
@@ -305,7 +305,7 @@ for root, dirs, files in os.walk(os.path.join(currentDir, "bookworm_transform"))
 
                         #TODO scrape search and URL string from data
 
-                        searchString = createSearchString(year, uni, line)
+                        searchString = createSearchString(year, uni, cleanLine)
                         #create json catalog file
 
                         print "Writing to the jsoncatalogfile"
