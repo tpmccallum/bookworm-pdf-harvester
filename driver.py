@@ -34,6 +34,19 @@ import subprocess
 
 import codecs
 
+def createSearchString(year, uni, url):
+    #create dom object
+    doc = xml.dom.minidom.Document()
+    #create anchor element
+    anchor = doc.createElement('a')
+    #add attributes to element
+    anchor.attributes['href']= url
+    anchor.attributes['target']= "_blank"
+    #create text for inside the element
+    txt = doc.createTextNode("%s document from %s" % (year, uni))
+    anchor.appendChild(txt)
+    return anchor.toxml()
+
 
 
 def removeEverythingButAlphaNumeric(stringToClean):
@@ -292,8 +305,7 @@ for root, dirs, files in os.walk(os.path.join(currentDir, "bookworm_transform"))
 
                         #TODO scrape search and URL string from data
 
-                        searchString = "<a href=%s target=_blank>%s - %s<\a>" % (lowerAndStrip(line), year, uni.upper()) 
-                        #searchString = """%s, document from %s is located at <a href=%s target="_blank">%s</a>""" % (year, uni, line, line) 
+                        searchString = createSearchString(year, uni, line)
                         #create json catalog file
 
                         print "Writing to the jsoncatalogfile"
