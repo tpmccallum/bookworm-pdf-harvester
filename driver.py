@@ -292,18 +292,23 @@ for root, dirs, files in os.walk(os.path.join(currentDir, "bookworm_transform"))
                         fnExt = createTextFilename(filePathOnly, year, uni, True)
 
                         print "The filename for the text WITH an extension is %s " % (fnExt)
+                        
+                        rawTt = os.path.join(currentDir, "files", "texts", "raw", fnExt)
+                        
+                        print "Checking to see if we have already extracted the text for this document"
+                        if (not os.path.exists(rawTt)):
+                            print "Looks like we have to extract the text for this document"
+                            rawTextFile = codecs.open(rawTt, 'wb', "utf-8")
 
-                        rawTextFile = codecs.open(os.path.join(currentDir, "files", "texts", "raw", fnExt), 'wb', "utf-8")
+                            print "Extracting text from PDF file and writing to text file."
 
-                        print "Extracting text from PDF file and writing to text file."
+                            rawTextFile.write(convert(pdfFileLocation))
 
-                        #TODO write function to see if we have already got the converted text file (don't waste resources processing)
-
-                        rawTextFile.write(convert(pdfFileLocation))
-
-                        rawTextFile.close()
+                            rawTextFile.close()
 
                         #TODO scrape search and URL string from data
+                        else:
+                            print "We have already extracted the text for this file"
 
                         searchString = createSearchString(year, uni, cleanLine)
                         #create json catalog file
