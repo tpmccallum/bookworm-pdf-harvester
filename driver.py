@@ -223,8 +223,15 @@ print "Current working directory is %s" % (currentDir)
 
 print "Creating output environment"
 
-os.makedirs(os.path.join(currentDir, "files", "texts", "raw"))
-
+print "Establishing the path to the output files"
+pTrt = os.path.join(currentDir, "files", "texts", "raw")
+print "Checking to see if the raw files directory exists"
+if (not os.path.exists(pTrt)):
+    print "The raw files directory does not exists so we will create it now"
+    os.makedirs(pTrt)
+else:
+    print "We already have a raw files directory"
+    
 os.makedirs(os.path.join(currentDir, "files", "metadata"))
 
 print "Copying our field_descriptions.json file from %s to the files/metadata dir " % (currentDir)
