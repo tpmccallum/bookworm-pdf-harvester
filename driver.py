@@ -222,16 +222,10 @@ currentDir = os.getcwd()
 print "Current working directory is %s" % (currentDir)
 
 print "Creating output environment"
-
-print "Establishing the path to the output files"
 pTrt = os.path.join(currentDir, "files", "texts", "raw")
-print "Checking to see if the raw files directory exists"
 if (not os.path.exists(pTrt)):
-    print "The raw files directory does not exists so we will create it now"
     os.makedirs(pTrt)
-else:
-    print "We already have a raw files directory"
-    
+
 os.makedirs(os.path.join(currentDir, "files", "metadata"))
 
 print "Copying our field_descriptions.json file from %s to the files/metadata dir " % (currentDir)
@@ -264,7 +258,7 @@ for root, dirs, files in os.walk(os.path.join(currentDir, "bookworm_transform"))
 
                         pdfFileLocation = fetchPdf(cleanLine, root)
 
-                        pathToSplit = pdfFileLocation
+                        pathToSplit = str(pdfFileLocation)
 
                         print "Splitting the path %s " % (pdfFileLocation)
 
@@ -299,12 +293,9 @@ for root, dirs, files in os.walk(os.path.join(currentDir, "bookworm_transform"))
                         fnExt = createTextFilename(filePathOnly, year, uni, True)
 
                         print "The filename for the text WITH an extension is %s " % (fnExt)
-                        
+
                         rawTt = os.path.join(currentDir, "files", "texts", "raw", fnExt)
-                        
-                        print "Checking to see if we have already extracted the text for this document"
-                        if (not os.path.exists(rawTt)):
-                            print "Looks like we have to extract the text for this document"
+                        if (not os.path.exists(rawTt)): 
                             rawTextFile = codecs.open(rawTt, 'wb', "utf-8")
 
                             print "Extracting text from PDF file and writing to text file."
@@ -315,8 +306,8 @@ for root, dirs, files in os.walk(os.path.join(currentDir, "bookworm_transform"))
 
                         #TODO scrape search and URL string from data
                         else:
-                            print "We have already extracted the text for this file"
-
+                            print "We have already extracted the text for that file ****"
+                        
                         searchString = createSearchString(year, uni, cleanLine)
                         #create json catalog file
 
